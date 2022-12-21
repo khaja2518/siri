@@ -1,23 +1,49 @@
-import logo from './logo.svg';
 import './App.css';
+import react, { useState } from 'react';
+
+import FirstComponent from './Components/FirstComponent';
+import SecondComponent from './Components/SecondComponent';
+import ThirdComponent from './Components/ThirdComponent';
+import FourthComponent from './Components/FourthComponent';
+import FifthComponent from './Components/FifthComponent';
+
 
 function App() {
+
+  let stateless = ""
+  let [newstatefull, setstate] = useState(stateless)
+
+  const changeState = (props) => {
+    setstate(newstatefull=props)
+  }
+
+  let fourthvar = newstatefull
+
+  let myplace=""
+  let [mystatefullplace,setstateplace]=useState(myplace)
+  
+  const changeplace=(props)=>{
+    setstateplace(mystatefullplace=props)
+  }
+
+  let singleObj = [{
+    name: 'siri',
+    place: mystatefullplace,
+    age: 24
+  },
+  {
+    name: 'pasha',
+    place: 'erragadda',
+    age: 25
+  }];
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FirstComponent />
+      <SecondComponent />
+      <ThirdComponent />
+      <FourthComponent varname={fourthvar} varobj={singleObj} />
+      <FifthComponent changeState={changeState} changeplace={changeplace}/>
     </div>
   );
 }
